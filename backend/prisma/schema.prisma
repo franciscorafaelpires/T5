@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id                  Int       @id @default(autoincrement())
+  nome                String
+  nomeSocial          String
+  cpf                 CPF      @relation(fields: [cpfId], references: [id], onDelete: Cascade)
+  cpfId               Int      @unique
+  rgs                 RG[]
+  dataCadastro        DateTime @default(now())
+  telefones           Telefone[]
+  produtosConsumidos  ConsumoProduto[]
+  servicosConsumidos  ConsumoServico[]
+  pets                Pet[]
+}
+
+model CPF {
+  id           Int      @id @default(autoincrement())
+  valor        String   @unique
+  dataEmissao  DateTime
+  cliente      Cliente?
+}
+
+model RG {
+  id           Int      @id @default(autoincrement())
+  valor        String
+  dataEmissao  DateTime
+  clienteId    Int
+  cliente      Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+}
+
+model Telefone {
+  id        Int     @id @default(autoincrement())
+  ddd       String
+  numero    String
+  clienteId Int
+  cliente   Cliente @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+}
+
+model Pet {
+  id        Int     @id @default(autoincrement())
+  nome      String
+  tipo      String
+  raca      String
+  genero    String
+  clienteId Int
+  cliente   Cliente @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+}
+
+model Produto {
+  id     Int    @id @default(autoincrement())
+  nome   String
+  preco  Float
+  consumos ConsumoProduto[]
+}
+
+model Servico {
+  id     Int    @id @default(autoincrement())
+  nome   String
+  preco  Float
+  consumos ConsumoServico[]
+}
+
+model ConsumoProduto {
+  id         Int      @id @default(autoincrement())
+  cliente    Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  clienteId  Int
+  produto    Produto  @relation(fields: [produtoId], references: [id])
+  produtoId  Int
+  quantidade Int      @default(1)
+  data       DateTime @default(now())
+}
+
+model ConsumoServico {
+  id         Int      @id @default(autoincrement())
+  cliente    Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  clienteId  Int
+  servico    Servico  @relation(fields: [servicoId], references: [id])
+  servicoId  Int
+  quantidade Int      @default(1)
+  data       DateTime @default(now())
+}

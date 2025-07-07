@@ -1,0 +1,187 @@
+:root {
+  /* Paleta 2: Moderno e Vibrante */
+  --primary-color: #36454F; /* Cinza Chumbo */
+  --secondary-color: #FFDB58; /* Amarelo Mostarda */
+  --accent-color: #FA8072; /* Rosa Salmão */
+  --text-color: #333333; /* Para texto principal, um cinza escuro */
+  --light-text-color: #666666; /* Para texto secundário */
+  --light-background-color: #F5F5F5; /* Um cinza muito claro para fundos de cards/formulários */
+  --border-color: #D3D3D3; /* Cinza Claro */
+  --success-color: #28a745; /* Verde padrão para sucesso, pode ser ajustado */
+  --danger-color: #dc3545; /* Vermelho padrão para perigo, pode ser ajustado */
+
+  /* Tipografia */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais amigável */
+  line-height: 1.6;
+  font-weight: 400;
+
+  color: var(--text-color);
+  background-color: var(--background-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+a {
+  font-weight: 500;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--secondary-color);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--primary-color);
+  color: var(--light-background-color);
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s;
+}
+button:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto var(--primary-color);
+}
+
+/* Estilos para formulários e tabelas */
+.form-control, .form-select {
+  border-color: var(--border-color);
+}
+
+.table {
+  background-color: var(--light-background-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: var(--primary-color);
+  color: var(--light-background-color);
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.alert {
+  border-radius: 8px;
+}
+
+.container {
+  background-color: var(--light-background-color);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sobrescrevendo estilos de botões do Bootstrap */
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--light-background-color) !important;
+}
+.btn-primary:hover {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+}
+
+.btn-danger {
+  background-color: var(--danger-color) !important;
+  border-color: var(--danger-color) !important;
+  color: var(--light-background-color) !important;
+}
+.btn-danger:hover {
+  background-color: #bd2130 !important; /* Escurece um pouco no hover */
+  border-color: #bd2130 !important;
+}
+
+.btn-success {
+  background-color: var(--success-color) !important;
+  border-color: var(--success-color) !important;
+  color: var(--light-background-color) !important;
+}
+.btn-success:hover {
+  background-color: #1e7e34 !important; /* Escurece um pouco no hover */
+  border-color: #1e7e34 !important;
+}
+
+.btn-outline-secondary {
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  background-color: transparent !important;
+}
+.btn-outline-secondary:hover {
+  color: var(--light-background-color) !important;
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* Estilos para list-group */
+.list-group-item {
+  background-color: var(--background-color);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.list-group-item-action:hover {
+  background-color: var(--light-background-color);
+}
+
+/* Contraste para navegação/cabeçalho */
+.navbar {
+  background-color: var(--primary-color) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+.navbar-brand {
+  color: var(--secondary-color) !important;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  color: var(--secondary-color) !important;
+  font-weight: 500;
+  margin: 0 10px;
+  transition: color 0.3s ease, background 0.3s ease;
+  background: transparent;
+  border-radius: 6px;
+}
+
+.nav-link:hover, .nav-link:focus {
+  color: var(--primary-color) !important;
+  background: var(--secondary-color);
+  outline: 2px solid var(--secondary-color);
+}
+
+.navbar-toggler {
+  border-color: var(--secondary-color) !important;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
